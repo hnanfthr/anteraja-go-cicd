@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anteraja Dummy Tracking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 flex justify-center py-10 font-sans">
+
+    <div class="bg-white w-full max-w-2xl rounded-3xl shadow-sm p-10">
+        <div class="text-center mb-8">
+            <div class="bg-pink-500 text-white w-12 h-12 flex items-center justify-center rounded-xl mx-auto mb-4">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+            </div>
+            <h1 class="text-3xl font-bold text-pink-600 mb-1">Anteraja Dummy</h1>
+            <p class="text-gray-500 mb-3">Pasti Bawa Hoki!</p>
+            <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-xs font-semibold">GOLANG BACKEND</span>
+        </div>
+
+        <form method="GET" action="/track" class="flex gap-4 mb-8">
+            <input type="text" name="nomor_resi" placeholder="RB-IT-2026" class="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500" value="{{if .}}{{.Resi}}{{end}}">
+            <button type="submit" class="bg-pink-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-pink-700 transition">Lacak &rarr;</button>
+        </form>
+
+        {{if .}}
+        <div class="border border-gray-100 bg-gray-50/50 rounded-2xl p-6 mb-4">
+            <div class="flex justify-between items-center border-b border-gray-200 pb-4 mb-4">
+                <div>
+                    <p class="text-xs text-gray-400 font-semibold mb-1">NOMOR RESI</p>
+                    <p class="text-lg font-bold">{{.Resi}}</p>
+                </div>
+                <div class="bg-emerald-100 text-emerald-700 px-4 py-1.5 rounded-full text-sm font-bold flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span> {{.Status}}
+                </div>
+            </div>
+            <div class="grid grid-cols-3 gap-4">
+                <div>
+                    <p class="text-xs text-gray-400 font-semibold mb-1">PENERIMA</p>
+                    <p class="text-sm font-medium">{{.Penerima}}</p>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-400 font-semibold mb-1">LAYANAN</p>
+                    <p class="text-sm font-medium text-pink-600">{{.Layanan}}</p>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-400 font-semibold mb-1">ISI PAKET</p>
+                    <p class="text-sm font-medium">{{.Isi}}</p>
+                </div>
+            </div>
+        </div>
+        {{end}}
+    </div>
+
+</body>
+</html>
